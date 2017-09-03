@@ -1,0 +1,8 @@
+# requirements for client
+websocket-client>=0.40.0
+
+# requirements for server
+gevent>=1.2.2
+gevent-websocket>=0.10.1
+paramiko>=2.2.1
+flask>=0.12.2
