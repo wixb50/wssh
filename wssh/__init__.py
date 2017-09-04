@@ -1,4 +1,5 @@
-from .server import WSSHBridge
+# from .server import WSSHBridge
 
-with open('%s/VERSION.txt' % __package__) as f:
-    __version__ = f.readline()
+import pkgutil
+__version__ = pkgutil.get_data(__package__, 'VERSION.txt').decode('ascii').strip()
+del pkgutil
