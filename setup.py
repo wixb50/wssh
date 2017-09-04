@@ -1,15 +1,12 @@
 from setuptools import setup
-
-
-with open('wssh/VERSION.txt') as f:
-    version = f.readline()
+from wssh import __version__
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()
 
 setup(
     name='wssh',
-    version=version,
+    version=__version__,
     author='wixb50',
     author_email='wixb50@gmail.com',
     packages=[
