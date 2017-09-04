@@ -1,3 +1,4 @@
 from .server import WSSHBridge
 
-__version__ = '0.1.0'
+with open('%s/VERSION.txt' % __package__) as f:
+    __version__ = f.readline()
