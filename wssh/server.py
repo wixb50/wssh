@@ -130,6 +130,8 @@ class WSSHBridge(object):
                 data = channel.recv(1024)
                 if not len(data):
                     return
+                if isinstance(data, bytes):
+                    data = data.decode('utf-8')
                 self._websocket.send(json.dumps({'data': data}))
         finally:
             self.close()
