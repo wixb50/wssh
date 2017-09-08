@@ -118,7 +118,7 @@ class WSSHBridge(object):
                         data['resize'].get('width', 80),
                         data['resize'].get('height', 24))
                 if 'data' in data:
-                    channel.send(data['data'])
+                    channel.send(data['data'].encode('utf-8'))
         finally:
             self.close()
 
