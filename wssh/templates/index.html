@@ -3,8 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>wssh</title>
+        <link href="{{url_for('static', filename='favicon.ico')}}" rel="icon">
 
         <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='xterm.css')}}" rel="stylesheet" />
         <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
     </head>
 
@@ -137,7 +139,7 @@
 
         <script type="application/javascript" src="{{url_for('static', filename='jquery.min.js')}}">
         </script>
-        <script type="application/javascript" src="{{url_for('static', filename='term.js')}}">
+        <script type="application/javascript" src="{{url_for('static', filename='xterm.js')}}">
         </script>
         <script type="application/javascript" src="{{url_for('static', filename='wssh.js')}}">
         </script>
@@ -147,8 +149,7 @@
                 var term = new Terminal(80, 24, function(key) {
                     client.send(key);
                 });
-                term.open();
-                $('.terminal').detach().appendTo('#term');
+                term.open(document.getElementById('term'), true);
                 term.resize(80, 24);
                 term.write('Connecting...');
                 client.connect($.extend(options, {
