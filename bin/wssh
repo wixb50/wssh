@@ -59,11 +59,6 @@ if __name__ == '__main__':
     else:
         (username, hostname) = (getpass.getuser(), args.destination)
 
-    if args.password == '':
-        password = getpass.getpass('Password: ')
-    else:
-        password = args.password
-
     if args.key_passphrase == '':
         key_passphrase = getpass.getpass('Enter passphrase for private key: ')
     else:
@@ -75,7 +70,7 @@ if __name__ == '__main__':
         for path in key_files:
             path = os.path.expanduser(path)
             if os.path.exists(path):
-                key = file(path).read()
+                key = open(path).read()
                 break
         if key is None:
             print('Error: Unable to locate identity file {0}' \
@@ -86,7 +81,12 @@ if __name__ == '__main__':
             print('Error: Identity file "{0}" does not exist' \
                 .format(args.key), file=sys.stderr)
             sys.exit(1)
-        key = file(args.key).read()
+        key = open(args.key).read()
+
+    if args.password == '' or (key_passphrase is None and key is None):
+        password = getpass.getpass('Password: ')
+    else:
+        password = args.password
 
     params = {
         'password': password,
