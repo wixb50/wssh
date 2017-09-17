@@ -25,6 +25,9 @@ it ships with two command line tools: `wsshd` (the server) and `wssh` (the clien
 ```
 $ wsshd 
 wsshd/0.1.0 running on 0.0.0.0:5000
+
+# Or just run by docker
+$ docker run -d -p 5000:5000 --name wsshd --restart always wixb50/wsshd:latest
 ```
 
 ```
