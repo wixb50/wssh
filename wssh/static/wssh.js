@@ -101,3 +101,7 @@ WSSHClient.prototype.connect = function(options) {
 WSSHClient.prototype.send = function(data) {
     this._connection.send(JSON.stringify({'data': data}));
 };
+
+WSSHClient.prototype.resize = function(width, height) {
+    this._connection.send(JSON.stringify({'resize': {'width': width, 'height': height}}));
+};
