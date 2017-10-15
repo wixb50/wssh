@@ -1,13 +1,12 @@
-var term,
-    client;
-
-var terminalContainer = document.getElementById('term');
+'use strict';
 
 function openTerminal(options) {
-  client = new WSSHClient();
-  term = new Terminal(options.cols - 1, options.rows, function(key) {
+  var client = new WSSHClient();
+  var term = new Terminal(options.cols - 1, options.rows, function(key) {
       client.send(key);
   });
+  var terminalContainer = document.getElementById('term');
+
   term.open(terminalContainer, true);
   term.on('resize', function(size){
       var cols = size.cols,
